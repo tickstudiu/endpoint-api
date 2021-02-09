@@ -40,11 +40,31 @@ const transfer = {
     }),
 }
 
+const outstanding = {
+    body: Joi.object().keys({
+        index: Joi.number().integer().required(),
+        size: Joi.number().integer().required()
+    }),
+}
+
+const xRegister = {
+    body: Joi.object().keys({
+        playerName: Joi.string().required().custom(playerName),
+        fullName: Joi.string().required(),
+        password: Joi.string().required().custom(password),
+        currency: Joi.string().required().valid('THB'),
+        dob: Joi.string().required().pattern(new RegExp(/([12]\d{3}[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01]))/)),
+        email: Joi.string().allow('', null),
+        mobileNumber: Joi.string().allow('', null),
+    }),
+}
 
 module.exports = {
     balance,
     updatePassword,
     authLogin,
     updateBalance,
-    transfer
+    transfer,
+    outstanding,
+    xRegister
 };

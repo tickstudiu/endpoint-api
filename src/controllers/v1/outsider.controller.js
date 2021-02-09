@@ -124,6 +124,52 @@ const credit = catchAsync(async (req, res) => {
     return res.send({data})
 });
 
+const outstanding = catchAsync(async (req, res) => {
+    const {size, index } = req.body
+    const token = await model.setting.server.findOne({where: {name: 'token'}})
+    const agent = await model.setting.server.findOne({where: {name: 'agent'}})
+    const {timeStamp, sign} = createSignByAgentName(agent.code, token.code)
+
+    const {data} = await axios.post('https://pwlapi.linkv2.com/api/tickets/findOutstandingTickets', {
+        Partner: agent.code,
+        TimeStamp: timeStamp,
+        Sign: sign,
+        PageSize: size,
+        PageIndex: index
+    })
+
+    return res.send({data})
+});
+
+const xRegister = catchAsync(async (req, res) => {
+    const {playerName, fullName, password, currency, dob, email, mobileNumber} = req.body
+    const remoteAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+    let ip = remoteAddress.split(":")
+    ip = ip[ip.length - 1]
+
+    const token = await model.setting.server.findOne({where: {name: 'token'}})
+    const agent = await model.setting.server.findOne({where: {name: 'agent'}})
+    const {timeStamp, sign} = createSignByAgentNameAndPlayerName(agent.code, playerName, token.code)
+
+    const {data} = await axios.post('https://cauthapi.linkv2.com/api/credit-auth/xregister', {
+        Username: playerName,
+        AgentName: agent.code,
+        Fullname: fullName,
+        Password: password,
+        Currency: currency,
+        Dob: dob,
+        Gender: 0,
+        Email: email,
+        Mobile: mobileNumber,
+        Ip: ip,
+        TimeStamp: timeStamp,
+        Sign: sign
+    })
+
+
+    return res.send({data})
+});
+
 module.exports = {
     balance,
     updatePassword,
@@ -131,5 +177,7 @@ module.exports = {
     deposit,
     withdraw,
     playerTransfer,
-    credit
+    credit,
+    outstanding,
+    xRegister
 }

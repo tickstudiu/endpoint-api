@@ -11,8 +11,8 @@ router.post("/player/transfer",  passport.authenticate('bearer', { session: fals
 router.post("/player/balance",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.put("/change/password",   passport.authenticate('bearer', { session: false }), validate(outsiderValidation.updatePassword), outsiderController.updatePassword);
 router.get("/agent/credit",  passport.authenticate('bearer', { session: false }), outsiderController.credit);
-router.post("/outstanding",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
-router.post("/xRegister",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
+router.post("/outstanding",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.outstanding), outsiderController.outstanding);
+router.post("/xRegister",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.xRegister), outsiderController.xRegister);
 router.post("/register",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/check/transaction",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/tickets",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
