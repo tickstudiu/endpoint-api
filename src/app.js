@@ -5,6 +5,8 @@ const config = require('./config/config');
 const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
 const app = express();
+const passport = require('passport');
+const { bearerStrategy } = require('./config/passport');
 const path = require("path");
 const morgan = require('./config/morgan');
 const routes = require('./routes/v1');
@@ -20,6 +22,9 @@ app.use(helmet({ contentSecurityPolicy: (config.env === 'production') ? undefine
 // enable cors
 app.use(cors());
 app.options('*', cors());
+
+app.use(passport.initialize());
+passport.use('bearer', bearerStrategy);
 
 // parse json request body
 app.use(express.json());
