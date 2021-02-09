@@ -126,22 +126,22 @@ List of available routes:
 `GET /v1/docs/` - documentation
 
 **Outsider routes**:\
-`GET /v1/outsider/login` - login\
-`GET /v1/outsider/deposit` - add balance player\
-`GET /v1/outsider/withdraw` - remove balance player\
-`GET /v1/outsider/player/transfer` - watch transaction player\
-`GET /v1/outsider/player/balance` - check balance\
-`GET /v1/outsider/change/password` - change password player\
+`POST /v1/outsider/login` - login\
+`POST /v1/outsider/deposit` - add balance player\
+`POST /v1/outsider/withdraw` - remove balance player\
+`POST /v1/outsider/player/transfer` - watch transaction player\
+`POST /v1/outsider/player/balance` - check balance\
+`PUT /v1/outsider/change/password` - change password player\
 `GET /v1/outsider/agent/credit` - check credit agent\
-`GET /v1/outsider/outstanding` - check outstanding (tickets are active)\
-`GET /v1/outsider/xRegister` - register\
-`GET /v1/outsider/tickets` - check all tickets\
-`GET /v1/outsider/player/turnover` - check turnover player\
-`GET /v1/outsider/player/information` - watch information player\
-`GET /v1/outsider/player/total/deposit` - watch add balance history player\
-`GET /v1/outsider/player/total/withdrawal` - watch remove balance history player\
-`GET /v1/outsider/member/list/date` - watch player created time\
-`GET /v1/outsider/player/outstanding` - check outstanding player
+`POST /v1/outsider/outstanding` - check outstanding (tickets are active)\
+`POST /v1/outsider/xRegister` - register\
+`POST /v1/outsider/tickets` - check all tickets\
+`POST /v1/outsider/player/turnover` - check turnover player\
+`POST /v1/outsider/player/information` - watch information player\
+`POST /v1/outsider/player/total/deposit` - watch add balance history player\
+`POST /v1/outsider/player/total/withdrawal` - watch remove balance history player\
+`POST /v1/outsider/member/list/date` - watch player created time\
+`POST /v1/outsider/player/outstanding` - check outstanding player
 
 ## Inspirations
 
