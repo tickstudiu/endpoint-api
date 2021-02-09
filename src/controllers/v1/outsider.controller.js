@@ -16,25 +16,7 @@ const balance = catchAsync(async (req, res) => {
         Sign: sign
     })
 
-    const code = await model.code.error.findOne({where: {code: data.Error}})
-    if (!code){
-        return {
-            data
-        }
-    }
-
-    if (data.Error !== 0){
-        return res.send({
-            status: code.description,
-            sign: data.Sign
-        })
-    }
-
-    return res.send({
-        status: code.description,
-        sign: data.Sign,
-        balance: data.Balance
-    })
+    return res.send({data})
 });
 
 const updatePassword = catchAsync(async (req, res) => {
@@ -51,18 +33,30 @@ const updatePassword = catchAsync(async (req, res) => {
         Sign: sign
     })
 
-    if(!data.Status){
-        return res.send({
-            status: 'Invalid Operation',
-        })
-    }
+    return res.send({data})
+});
 
-    return res.send({
-        status: 'Success',
+const login = catchAsync(async (req, res) => {
+    const {playerName, password, isMobile, locale } = req.body
+    const token = await model.setting.server.findOne({where: {name: 'token'}})
+    const agent = await model.setting.server.findOne({where: {name: 'agent'}})
+    const {timeStamp, sign} = createSignByAgentNameAndPlayerNameAndPassword(agent.code, playerName, password, token.code)
+
+    const {data} = await axios.post('https://cauthapi.linkv2.com/api/credit-auth/login', {
+        Username: playerName,
+        Partner: agent.code,
+        Domain: `https://imidemo.net`,
+        Lang: locale,
+        IsMobile: isMobile,
+        TimeStamp: timeStamp,
+        Sign: sign
     })
+
+    return res.send({data})
 });
 
 module.exports = {
     balance,
-    updatePassword
+    updatePassword,
+    login
 }

@@ -4,7 +4,7 @@ const outsiderValidation = require('../../validations/outsider.validation');
 const validate = require('../../middlewares/validate');
 const passport = require('passport');
 
-router.post("/login",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
+router.post("/login",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.authLogin), outsiderController.login);
 router.post("/deposit",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/withdraw",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/transfer",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);

@@ -14,8 +14,18 @@ const updatePassword = {
     }),
 }
 
+const authLogin = {
+    body: Joi.object().keys({
+        playerName: Joi.string().required().custom(playerName),
+        password: Joi.string().required().custom(password),
+        isMobile: Joi.boolean().required(),
+        locale: Joi.string().required().valid('en-us', 'th-th'),
+    }),
+}
+
 
 module.exports = {
     balance,
-    updatePassword
+    updatePassword,
+    authLogin
 };
