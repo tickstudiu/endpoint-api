@@ -13,7 +13,7 @@ router.put("/change/password",   passport.authenticate('bearer', { session: fals
 router.get("/agent/credit",  passport.authenticate('bearer', { session: false }), outsiderController.credit);
 router.post("/outstanding",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.outstanding), outsiderController.outstanding);
 router.post("/xRegister",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.register), outsiderController.xRegister);
-router.post("/register",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.register), outsiderController.register);
+// router.post("/register",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.register), outsiderController.register);
 router.post("/tickets",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.tickets), outsiderController.tickets);
 router.post("/player/turnover",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.turnover), outsiderController.playerTurnover);
 router.post("/player/information",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.player), outsiderController.playerInformation);

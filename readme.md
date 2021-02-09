@@ -76,10 +76,15 @@ The environment variables can be found and modified in the `.env` file. They com
 
 ```bash
 # Port number
-APP_PORT=3000
+APP_PORT=21454
 
-# URL of the Mongo DB
-MONGODB_URI=
+# DATABASE
+MYSQL_HOST=localhost
+MYSQL_PORT=443
+MYSQL_USER=root
+MYSQL_PASSWORD=aa123654
+MYSQL_DATABASE=demo_v2
+MYSQL_LIMIT_TIME=10
 
 # SERVER
 SERVER_KEY=/etc/letsencrypt/live/<domain>.com/privkey.pem
@@ -91,9 +96,8 @@ SERVER_CA=/etc/letsencrypt/live/<domain>.com/chain.pem
 
 ```
 public
- |--upload          # Upload file image
- |--asssets         
-     |--database    # Mockup database
+ |--assets         
+     |--postman     # Postman file
  
 src
  |--config          # Environment variables and configuration related things
@@ -116,7 +120,28 @@ tests               # Tester file
 List of available routes:
 
 **Init routes**:\
-`GET /v1/init/database/` - init database
+`GET /v1/init/mysql/database/` - init database mysql
+
+**Docs routes**:\
+`GET /v1/docs/` - documentation
+
+**Outsider routes**:\
+`GET /v1/outsider/login` - login\
+`GET /v1/outsider/deposit` - add balance player\
+`GET /v1/outsider/withdraw` - remove balance player\
+`GET /v1/outsider/player/transfer` - watch transaction player\
+`GET /v1/outsider/player/balance` - check balance\
+`GET /v1/outsider/change/password` - change password player\
+`GET /v1/outsider/agent/credit` - check credit agent\
+`GET /v1/outsider/outstanding` - check outstanding (tickets are active)\
+`GET /v1/outsider/xRegister` - register\
+`GET /v1/outsider/tickets` - check all tickets\
+`GET /v1/outsider/player/turnover` - check turnover player\
+`GET /v1/outsider/player/information` - watch information player\
+`GET /v1/outsider/player/total/deposit` - watch add balance history player\
+`GET /v1/outsider/player/total/withdrawal` - watch remove balance history player\
+`GET /v1/outsider/member/list/date` - watch player created time\
+`GET /v1/outsider/player/outstanding` - check outstanding player
 
 ## Inspirations
 

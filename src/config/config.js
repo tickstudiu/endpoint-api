@@ -8,7 +8,6 @@ const envVarsSchema = Joi.object()
     .keys({
         NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
         APP_PORT: Joi.number().default(3000),
-        MONGODB_URI: Joi.string().required().description('Mongo DB url'),
         SERVER_KEY: Joi.string().required(),
         SERVER_CERT: Joi.string().required(),
         SERVER_CA: Joi.string().required(),
@@ -33,15 +32,6 @@ module.exports = {
     key: envVars.SERVER_KEY,
     cert: envVars.SERVER_CERT,
     ca: envVars.SERVER_CA,
-    mongoose: {
-        uri: envVars.MONGODB_URI,
-        options: {
-            useNewUrlParser: true,
-            useCreateIndex: true,
-            useFindAndModify: false,
-            useUnifiedTopology: true
-        },
-    },
     mysql: {
         host: envVars.MYSQL_HOST,
         port: envVars.MYSQL_PORT,
