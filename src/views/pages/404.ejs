@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+    <title>404 Page</title>
+</head>
+
+<body>
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<!--    main container-->
+<div style="background: #007bff">
+    <div id="app">
+        <section class="d-flex justify-content-center align-items-center" style="height: 100vh; width: 100vw;">
+            <article class="text-center">
+                <h1 class="display-1 text-white m-0">404</h1>
+                <p class="m-0 text-justify text-white" style="opacity: 0.8;">oops looks like something was broken</p>
+            </article>
+        </section>
+    </div>
+</div>
+
+<script>
+    let App = new Vue({
+        el: '#app',
+        data: {
+            appTitle: '404 App',
+        },
+    })
+</script>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+</body>
+</html>

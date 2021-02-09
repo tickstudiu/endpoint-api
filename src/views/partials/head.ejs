@@ -1,0 +1,65 @@
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Load required Bootstrap and BootstrapVue CSS -->
+<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+<!-- Load polyfills to support older browsers -->
+<script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+
+<!-- Load Vue followed by BootstrapVue -->
+<script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+<!-- Load the following for BootstrapVueIcons support -->
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
+<!-- Font awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+
+<!-- Line LIFF script source -->
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+<!-- Axios script source -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- Moment -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-range/4.0.2/moment-range.js"></script>
+
+<style>
+    #main {
+        display: table;
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+    }
+    .fof {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .fof h1 {
+        font-size: 50px;
+        display: inline-block;
+        padding-right: 12px;
+        animation: type .5s alternate infinite;
+    }
+    body {
+        font-family: 'Kanit', sans-serif;
+        font-weight: 300;
+    }
+    pre {
+        overflow-x: auto;
+        background: #eaeaea;
+        padding: 1rem;
+    }
+    @keyframes type {
+        from {
+            box-shadow: inset -3px 0px 0px #888;
+        }
+        to {
+            box-shadow: inset -3px 0px 0px transparent;
+        }
+    }
+</style>
