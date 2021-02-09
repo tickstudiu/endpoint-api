@@ -23,7 +23,7 @@ const authLogin = {
     }),
 }
 
-const deposit = {
+const updateBalance = {
     body: Joi.object().keys({
         playerName: Joi.string().required().custom(playerName),
         amount: Joi.number().required(),
@@ -35,5 +35,5 @@ module.exports = {
     balance,
     updatePassword,
     authLogin,
-    deposit
+    updateBalance
 };
