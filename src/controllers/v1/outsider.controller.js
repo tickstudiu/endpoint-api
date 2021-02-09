@@ -1,5 +1,5 @@
 const catchAsync = require('../../utils/catchAsync');
-const {createSignByAgentNameAndPlayerName, createSignByAgentNameAndPlayerNameAndPassword} = require('../../utils/sign')
+const {createSignByAgentNameAndPlayerName, createSignByAgentNameAndPlayerNameAndPassword, createSignByAgentName} = require('../../utils/sign')
 const axios = require('axios');
 const model = require('../../models/mysql');
 
@@ -110,11 +110,26 @@ const playerTransfer = catchAsync(async (req, res) => {
     return res.send({data})
 });
 
+const credit = catchAsync(async (req, res) => {
+    const token = await model.setting.server.findOne({where: {name: 'token'}})
+    const agent = await model.setting.server.findOne({where: {name: 'agent'}})
+    const {timeStamp, sign} = createSignByAgentName(agent.code, token.code)
+
+    const {data} = await axios.post('https://cauthapi.linkv2.com/api/credit-auth/current-credit', {
+        AgentName: agent.code,
+        TimeStamp: timeStamp,
+        Sign: sign
+    })
+
+    return res.send({data})
+});
+
 module.exports = {
     balance,
     updatePassword,
     login,
     deposit,
     withdraw,
-    playerTransfer
+    playerTransfer,
+    credit
 }

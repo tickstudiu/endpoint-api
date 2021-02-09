@@ -10,10 +10,7 @@ router.post("/withdraw",  passport.authenticate('bearer', { session: false }), v
 router.post("/player/transfer",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.transfer), outsiderController.playerTransfer);
 router.post("/player/balance",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.put("/change/password",   passport.authenticate('bearer', { session: false }), validate(outsiderValidation.updatePassword), outsiderController.updatePassword);
-router.post("/logout",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
-router.post("/play/game",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
-router.get("/game/list",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
-router.get("/agent/credit",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
+router.get("/agent/credit",  passport.authenticate('bearer', { session: false }), outsiderController.credit);
 router.post("/outstanding",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/xRegister",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/register",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
