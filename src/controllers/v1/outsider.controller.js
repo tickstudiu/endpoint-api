@@ -55,8 +55,26 @@ const login = catchAsync(async (req, res) => {
     return res.send({data})
 });
 
+const deposit = catchAsync(async (req, res) => {
+    const {playerName, amount } = req.body
+    const token = await model.setting.server.findOne({where: {name: 'token'}})
+    const agent = await model.setting.server.findOne({where: {name: 'agent'}})
+    const {timeStamp, sign} = createSignByAgentNameAndPlayerName(agent.code, playerName, token.code)
+
+    const {data} = await axios.post('https://ctransferapi.linkv2.com/api/credit-transfer/deposit', {
+        AgentName: agent.code,
+        PlayerName: playerName,
+        Amount: amount,
+        TimeStamp: timeStamp,
+        Sign: sign
+    })
+
+    return res.send({data})
+});
+
 module.exports = {
     balance,
     updatePassword,
-    login
+    login,
+    deposit
 }

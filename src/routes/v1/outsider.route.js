@@ -5,7 +5,7 @@ const validate = require('../../middlewares/validate');
 const passport = require('passport');
 
 router.post("/login",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.authLogin), outsiderController.login);
-router.post("/deposit",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
+router.post("/deposit",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.deposit), outsiderController.deposit);
 router.post("/withdraw",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/transfer",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/player/balance",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
@@ -16,6 +16,7 @@ router.get("/game/list",  passport.authenticate('bearer', { session: false }), v
 router.get("/agent/credit",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/outstanding",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/xRegister",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
+router.post("/register",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/check/transaction",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/tickets",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
 router.post("/player/turnover",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.balance), outsiderController.balance);
