@@ -14,6 +14,19 @@ const updatePassword = {
     }),
 }
 
+const winLoss = {
+    query: Joi.object().keys({
+        size: Joi.number().integer().default(10),
+        index: Joi.number().integer().default(1),
+    }),
+    body: Joi.object().keys({
+        playerName: Joi.string().required().custom(playerName),
+        from: Joi.string().required().pattern(new RegExp(/([12]\d{3}[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01]))/)),
+        to: Joi.string().required().pattern(new RegExp(/([12]\d{3}[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01]))/)),
+        products: Joi.array().required().items(Joi.string().required().pattern(new RegExp(/^[0-9]{1,10}$/))),
+    }),
+};
+
 const authLogin = {
     body: Joi.object().keys({
         playerName: Joi.string().required().custom(playerName),
@@ -126,5 +139,6 @@ module.exports = {
     playerDeposit,
     playerWithdrawal,
     memberList,
-    playerOutstanding
+    playerOutstanding,
+    winLoss
 };

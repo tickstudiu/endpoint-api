@@ -321,6 +321,29 @@ const playerOutstanding = catchAsync(async (req, res) => {
     return res.send({data})
 });
 
+const winLoss = catchAsync(async (req, res) => {
+    const {playerName, from, to, products} = req.body
+    const {size, index} = req.query
+    const token = await model.setting.server.findOne({where: {name: 'token'}})
+    const agent = await model.setting.server.findOne({where: {name: 'agent'}})
+    const {timeStamp, sign} = createSignByAgentName(agent.code, token.code)
+
+    const {data} = await axios.post('https://ctransferapi.linkv2.com/api/reports/simplewinlose ', {
+        StartDate: from,
+        EndDate: to,
+        PageSize: size,
+        PageIndex: index,
+        AgentName: agent.code,
+        MemberName: agent.code,
+        PlayerName: playerName,
+        Products: products,
+        TimeStamp: timeStamp,
+        Sign: sign
+    })
+
+    return res.send({data})
+});
+
 module.exports = {
     balance,
     updatePassword,
@@ -338,5 +361,6 @@ module.exports = {
     playerDeposit,
     playerWithdrawal,
     memberList,
-    playerOutstanding
+    playerOutstanding,
+    winLoss
 }

@@ -16,6 +16,7 @@ router.post("/xRegister",  passport.authenticate('bearer', { session: false }), 
 // router.post("/register",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.register), outsiderController.register);
 router.post("/tickets",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.tickets), outsiderController.tickets);
 router.post("/player/turnover",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.turnover), outsiderController.playerTurnover);
+router.post("/winLoss",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.winLoss), outsiderController.winLoss);
 router.post("/player/information",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.player), outsiderController.playerInformation);
 router.post("/player/total/deposit",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.playerDeposit), outsiderController.playerDeposit);
 router.post("/player/total/withdrawal",  passport.authenticate('bearer', { session: false }), validate(outsiderValidation.playerWithdrawal), outsiderController.playerWithdrawal);
