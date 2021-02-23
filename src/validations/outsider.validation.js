@@ -68,7 +68,7 @@ const tickets = {
 
 const turnover = {
     body: Joi.object().keys({
-        playerName: Joi.string(),
+        playerName: Joi.string().allow(null, ''),
         from: Joi.string().required().pattern(new RegExp(/[12]\d{3}[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01])/)),
         to: Joi.string().required().pattern(new RegExp(/[12]\d{3}[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01])/)),
         product: Joi.number().integer().required(),
