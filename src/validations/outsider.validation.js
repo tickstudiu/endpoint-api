@@ -20,7 +20,7 @@ const winLoss = {
         index: Joi.number().integer().default(1),
     }),
     body: Joi.object().keys({
-        playerName: Joi.string().required().custom(playerName),
+        playerName: Joi.string().allow(null, ''),
         from: Joi.string().required().pattern(new RegExp(/([12]\d{3}[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01]))/)),
         to: Joi.string().required().pattern(new RegExp(/([12]\d{3}[-](0[1-9]|1[0-2])[-](0[1-9]|[12]\d|3[01]))/)),
         products: Joi.array().required().items(Joi.string().required().pattern(new RegExp(/^[0-9]{1,10}$/))),
