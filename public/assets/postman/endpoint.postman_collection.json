@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8727e274-e93e-4522-9adb-f176d24a4e30",
+		"_postman_id": "aac89490-c27d-4e4a-8270-0f28796ab715",
 		"name": "endpoint",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -807,6 +807,54 @@
 								"outsider",
 								"player",
 								"outstanding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "winloss",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "dbe1d1e9-3b35-46f2-94ba-007221e49590",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "asdf",
+								"value": "asdf",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"from\": \"2021-02-09\",\r\n    \"to\": \"2021-02-09\",\r\n    \"playerName\": \"\",\r\n    \"products\": [\"1\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://imidemo.net:21454/v1/outsider/winloss",
+							"protocol": "https",
+							"host": [
+								"imidemo",
+								"net"
+							],
+							"port": "21454",
+							"path": [
+								"v1",
+								"outsider",
+								"winloss"
 							]
 						}
 					},
